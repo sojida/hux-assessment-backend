@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const shortid = require('shortid');
 const bcrypt = require('bcrypt')
+const mongoosePaginate = require('mongoose-paginate-v2');
+
 
 const Schema = mongoose.Schema;
 
@@ -9,14 +11,16 @@ const ContactSchema = new Schema({
     type: String,
     default: shortid.generate
   },
-  created_at: { type: Date, default: new Date() },
-  user_id: { type: String },
-  first_name: { type: String, required: true },
-  last_name: { type: String, required: true },
-  country_code: { type: String, required: true },
-  phone_number: { type: String, required: true },
+  createdAt: { type: Date, default: new Date() },
+  updatedAt: { type: Date, default: new Date() },
+  userId: { type: String },
+  firstName: { type: String, required: true },
+  lastName: { type: String, required: true },
+  countryCode: { type: String, required: true },
+  phoneNumber: { type: String, required: true },
 });
 
+ContactSchema.plugin(mongoosePaginate);
 
 const ContactModel = mongoose.model('contacts', ContactSchema);
 

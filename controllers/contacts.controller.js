@@ -22,13 +22,14 @@ const UpdateContact = async (req, res) => {
 const GetContacts = async (req, res) => {
     const { _id } = req.user;
 
-    const serviceResponse = await contactService.GetContacts({ userId: _id });
+    const serviceResponse = await contactService.GetContacts({ userId: _id, ...req.query });
 
     return res.status(serviceResponse.code).json(serviceResponse);
 }
 
 const GetContact = async (req, res) => {
-    const { contactId } = req.params
+    const { contactId } = req.params;
+    const { _id } = req.user;
 
     const serviceResponse = await contactService.GetContact({ contactId, userId: _id });
 
