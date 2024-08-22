@@ -34,7 +34,7 @@ const SignupUser = async ({ email, password, name }) => {
     const token  = await GenerateToken(user)
 
     return {
-        code: 200,
+        code: 201,
         message: 'Sign up successful',
         success: true,
         data: {

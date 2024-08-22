@@ -18,6 +18,7 @@ const CreateContact = async ({
       code: 409,
       success: false,
       message: "Contact already exist",
+      data: null
     };
   }
 
@@ -140,7 +141,7 @@ const GetContacts = async ({ userId, page, search }) => {
 
   return {
     code: 200,
-    message: "contact retrieved successfully",
+    message: "contacts retrieved successfully",
     success: true,
     data: {
       contacts: contacts.docs,
