@@ -1,5 +1,4 @@
 const express = require('express');
-const db = require('./config/database')
 const morgan = require('morgan');
 const authRouter = require('./routes/auth.route')
 const contactRouter = require('./routes/contact.route');
@@ -32,9 +31,4 @@ app.use('*', (req, res) => {
 })
 
 
-db.connect() // db connection
-
-const PORT = 8000;
-app.listen(PORT, () => {
-    console.log('app is listening of port: ', PORT)
-})
+module.exports = app;
